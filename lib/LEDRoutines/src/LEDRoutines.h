@@ -10,7 +10,7 @@
 class LEDRoutines
 {
   public:
-    LEDRoutines(CRGB* leds, uint8_t numLeds, ArduinoTapTempo* tapTempo, Task* taskLedModeSelect) ;
+    void setLeds(CRGB* leds, uint8_t numLeds, ArduinoTapTempo* tapTempo, Task* taskLedModeSelect, uint8_t* currentBrightness ) ;
     void FillLEDsFromPaletteColors(uint8_t paletteIndex ) ;
     void fadeGlitter() ;
     void discoGlitter() ;
@@ -51,6 +51,12 @@ class LEDRoutines
     void setMaxBright( uint8_t maxBright );
 
     CRGB* _leds ;
+    ArduinoTapTempo* _tapTempo ;
+    uint8_t _maxBright = 20 ;
+    uint8_t _numLeds = 0 ;
+    Task* _taskLedModeSelect;
+    uint8_t* _currentBrightness ;
+
 };
 
 #endif
